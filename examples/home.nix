@@ -15,6 +15,7 @@
       format-icons = {
         Discharging = [ "⬇" "⬇" "⬇" "⬇" "⬇" ];
         Charging = [ "⬆" "⬆" "⬆" "⬆" "⬆" ];
+        "Fully charged" = [ "" "" "" "" "" ];
       };
       return-type = "json";
       restart-interval = 60;
