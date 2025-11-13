@@ -1,0 +1,12 @@
+#custom-upower {
+    color: @blue;
+}
+
+#custom-upower.low {
+    color: @yellow;
+}
+
+#custom-upower.critical,
+#custom-upower.action {
+    color: @red;
+}

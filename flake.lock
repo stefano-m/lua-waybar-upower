@@ -1,0 +1,95 @@
+{
+  "nodes": {
+    "dbusProxyFlake": {
+      "inputs": {
+        "nixpkgs": [
+          "lua-upower_dbus",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1728059735,
+        "narHash": "sha256-AeKYKaPYADWkufB9OicPNTrcm1mQfkuMI+7WKidppNw=",
+        "owner": "stefano-m",
+        "repo": "lua-dbus_proxy",
+        "rev": "986bf1a4dc481a753c812c6035d2277a149c9b2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stefano-m",
+        "ref": "master",
+        "repo": "lua-dbus_proxy",
+        "type": "github"
+      }
+    },
+    "enumFlake": {
+      "inputs": {
+        "nixpkgs": [
+          "lua-upower_dbus",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1670589611,
+        "narHash": "sha256-UltTbaz4Sq2/YhggzaVA9xfcSNyibDqcG7RAvda3zoM=",
+        "owner": "stefano-m",
+        "repo": "lua-enum",
+        "rev": "0756c5114ed716f0c286d78b3241c3795632e6a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stefano-m",
+        "ref": "master",
+        "repo": "lua-enum",
+        "type": "github"
+      }
+    },
+    "lua-upower_dbus": {
+      "inputs": {
+        "dbusProxyFlake": "dbusProxyFlake",
+        "enumFlake": "enumFlake",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763035009,
+        "narHash": "sha256-4qy/D7uCC88SbgSqVyXCPrSuB5WjkxN5j3Fm5f9c0so=",
+        "owner": "stefano-m",
+        "repo": "lua-upower_dbus",
+        "rev": "0186b94e73135fc1229234ce9a62274ef8a8b5bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stefano-m",
+        "ref": "master",
+        "repo": "lua-upower_dbus",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1762756533,
+        "narHash": "sha256-HiRDeUOD1VLklHeOmaKDzf+8Hb7vSWPVFcWwaTrpm+U=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c2448301fb856e351aab33e64c33a3fc8bcf637d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "lua-upower_dbus": "lua-upower_dbus",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
