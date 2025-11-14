@@ -49,6 +49,10 @@ local function format(device)
 
   local percentage = device.Percentage and math.floor(device.Percentage) or ""
 
+  local percentage_msg = (percentage ~= "") and string.format("%d%%", percentage) or ""
+  percentage_msg = (percentage_msg ~= "") and percentage_msg .. " - " or percentage_msg
+  percentage_msg = percentage_msg .. device.state
+
   local what
   local when
 
@@ -70,9 +74,8 @@ local function format(device)
   capacity_msg = (capacity_msg ~= "") and "\rCapacity: " .. capacity_msg or capacity_msg
 
   tooltip =  string.format(
-    "%d%% - %s%s%s",
-    percentage,
-    device.state,
+    "%s%s%s",
+    percentage_msg,
     charge_status_msg,
     capacity_msg
   )
