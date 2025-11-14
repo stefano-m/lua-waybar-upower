@@ -65,11 +65,16 @@ local function format(device)
     charge_status_msg = string.format("\r%s in %s", what, to_hour_min_str(when))
   end
 
+  local capacity_msg = (device.Capacity and device.Capacity > 0) and string.format("%d%%", device.Capacity) or ""
+  capacity_msg = capacity_msg .. (device.CapacityLevel and string.format("(%s)", device.CapacityLevel) or "")
+  capacity_msg = (capacity_msg ~= "") and "\rCapacity: " .. capacity_msg or capacity_msg
+
   tooltip =  string.format(
-    "%d%% - %s%s",
+    "%d%% - %s%s%s",
     percentage,
     device.state,
-    charge_status_msg
+    charge_status_msg,
+    capacity_msg
   )
 
   return {
@@ -87,13 +92,26 @@ local relevant_property_names = {
   Percentage = true,
   State = true,
   WarningLevel = true, -- Low = 3, Critical = 4, Action = 5
+  CapacityLevel = true,
+  Capacity = true;
 }
 
 local function run()
 
   local upower = require("upower_dbus")
 
-  local device = upower.display_device
+  local device
+
+  for _, d in ipairs(upower.Manager.devices) do
+    if d.type == upower.enums.DeviceType.Battery.name then
+      device = d
+      break
+    end
+  end
+
+  if not device then
+    device = upower.display_device
+  end
   print(json.encode(format(device)))
 
   device:on_properties_changed(
