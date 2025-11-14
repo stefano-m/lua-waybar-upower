@@ -73,11 +73,15 @@ local function format(device)
   capacity_msg = capacity_msg .. (device.CapacityLevel and string.format("(%s)", device.CapacityLevel) or "")
   capacity_msg = (capacity_msg ~= "") and "\rCapacity: " .. capacity_msg or capacity_msg
 
+  local charge_threshold_msg = device.ChargeThresholdEnabled and string.format(
+    "\rMax charge limited to %d%%", device.ChargeEndThreshold) or ""
+
   tooltip =  string.format(
-    "%s%s%s",
+    "%s%s%s%s",
     percentage_msg,
     charge_status_msg,
-    capacity_msg
+    capacity_msg,
+    charge_threshold_msg
   )
 
   return {
