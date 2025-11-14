@@ -49,9 +49,8 @@ local function format(device)
 
   local percentage = device.Percentage and math.floor(device.Percentage) or ""
 
-  local percentage_msg = (percentage ~= "") and string.format("%d%%", percentage) or ""
-  percentage_msg = (percentage_msg ~= "") and percentage_msg .. " - " or percentage_msg
-  percentage_msg = percentage_msg .. device.state
+  local percentage_msg = device.state
+  percentage_msg = (percentage ~= "") and string.format("%s: %d%%", percentage_msg, percentage) or percentage_msg
 
   local what
   local when
